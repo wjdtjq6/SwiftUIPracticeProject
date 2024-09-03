@@ -14,6 +14,8 @@
 		BF2B8C472C859C250084E143 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2B8C462C859C250084E143 /* SettingView.swift */; };
 		BF2B8C492C859C6A0084E143 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2B8C482C859C6A0084E143 /* ProfileView.swift */; };
 		BF2B8C632C85FF1E0084E143 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2B8C622C85FF1D0084E143 /* MainView.swift */; };
+		BF2B8C712C872B410084E143 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2B8C702C872B410084E143 /* SearchView.swift */; };
+		BF2B8C732C8739800084E143 /* UpbitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2B8C722C8739800084E143 /* UpbitAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		BF2B8C462C859C250084E143 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		BF2B8C482C859C6A0084E143 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BF2B8C622C85FF1D0084E143 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		BF2B8C702C872B410084E143 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		BF2B8C722C8739800084E143 /* UpbitAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpbitAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 				BF2B8C482C859C6A0084E143 /* ProfileView.swift */,
 				BF2B8C622C85FF1D0084E143 /* MainView.swift */,
 				BF2B8C3E2C8581550084E143 /* Preview Content */,
+				BF2B8C702C872B410084E143 /* SearchView.swift */,
+				BF2B8C722C8739800084E143 /* UpbitAPI.swift */,
 			);
 			path = SwiftUIPracticeProject;
 			sourceTree = "<group>";
@@ -150,6 +156,8 @@
 				BF2B8C472C859C250084E143 /* SettingView.swift in Sources */,
 				BF2B8C3B2C8581530084E143 /* OnBoardingView.swift in Sources */,
 				BF2B8C632C85FF1E0084E143 /* MainView.swift in Sources */,
+				BF2B8C712C872B410084E143 /* SearchView.swift in Sources */,
+				BF2B8C732C8739800084E143 /* UpbitAPI.swift in Sources */,
 				BF2B8C392C8581530084E143 /* SwiftUIPracticeProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
