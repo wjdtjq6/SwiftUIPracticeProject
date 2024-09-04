@@ -9,18 +9,22 @@ import SwiftUI
 
 struct RandomImageView: View {
     let url = URL(string: "https://picsum.photos/200/300?random=1")
+    let sections = [
+        "첫번째 섹션",
+        "두번째 섹션",
+        "세번째 섹션",
+        "네번째 섹션",
+        "다섯번째 섹션",
 
+    ]
     var body: some View {
         NavigationView {
             ScrollView {
-                Text("첫번째 섹션")
-                    .font(.title2).bold()
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                horizontalPosterView()
+                ForEach(sections, id: \.self) { item in
+                    section(text: item)
+                }
             }
             .navigationTitle("My Random Image")
-            .padding()
-
         }
     }
     func horizontalPosterView() -> some View {
@@ -30,11 +34,20 @@ struct RandomImageView: View {
                     PosterView()
                 }
             }
-            //.scrollTargetLayout()
+            .padding(.horizontal)
+            .frame(height: 150)
         }
-        //.padding(.horizontal)
-        //.scrollTargetBehavior(.paging)
         .scrollIndicators(.hidden)
+    }
+    func section(text: String) -> some View {
+        VStack {
+            Text(text)
+                .font(.title2).bold()
+                .padding(.top)
+                .padding(.leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            horizontalPosterView()
+        }
     }
 }
 #Preview {

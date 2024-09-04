@@ -15,15 +15,16 @@ struct PosterView: View {
             switch data {
             case .empty:
                 ProgressView()
-                    .frame(width: 100, height: 200)
+                    .frame(width: 100, height: 150)
             case .success(let image):
                 AsyncImage(url: url){ image in
                     image.image?
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(25)
-                        .frame(width: 100, height: 200)
+                        .frame(width: 100, height: 150)
                 }
+                .padding(.horizontal)
                 .frame(width: 100, height: 200)
             case .failure(let error):
                 Image(systemName: "pencil")
