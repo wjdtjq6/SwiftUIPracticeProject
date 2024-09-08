@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct PosterView: View {
-    let url = URL(string: "https://picsum.photos/200/300?random=1")
-
+    let url: URL?//(string: "https://picsum.photos/200/300?random=1")
+    @Binding var title: String
+    
     var body: some View {
         AsyncImage(url: url) {data in
             switch data {
@@ -17,17 +18,16 @@ struct PosterView: View {
                 ProgressView()
                     .frame(width: 100, height: 150)
             case .success(let image):
-                AsyncImage(url: url){ image in
-                    image.image?
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .cornerRadius(25)
-                        .frame(width: 100, height: 150)
+                NavigationLink {
+                    DetailView(image: image)
+                    TextField("섹션 제목", text: $title)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+                } label: {
+                    DetailView(image: image)
                 }
-                .padding(.horizontal)
-                .frame(width: 100, height: 200)
             case .failure(let error):
-                Image(systemName: "pencil")
+                Image(systemName: "photo")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             @unknown default:
                 fatalError()
@@ -36,6 +36,6 @@ struct PosterView: View {
     }
 }
 
-#Preview {
-    PosterView()
-}
+//#Preview {
+//    PosterView(url: URL(string: "https://picsum.photos/200/300?random=1"), title: "")
+//}

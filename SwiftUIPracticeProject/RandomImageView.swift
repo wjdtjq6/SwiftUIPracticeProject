@@ -7,48 +7,58 @@
 
 import SwiftUI
 
-struct RandomImageView: View {
-    let url = URL(string: "https://picsum.photos/200/300?random=1")
-    let sections = [
-        "첫번째 섹션",
-        "두번째 섹션",
-        "세번째 섹션",
-        "네번째 섹션",
-        "다섯번째 섹션",
+struct Section: Identifiable {
+    let id = UUID()
+    var title: String
+}
 
-    ]
+struct RandomImageView: View {
+    @State private var sections = [
+           Section(title: "첫번째 섹션"),
+           Section(title: "두번째 섹션"),
+           Section(title: "세번째 섹션"),
+           Section(title: "네번째 섹션"),
+           Section(title: "다섯번째 섹션"),
+       ]
     var body: some View {
         NavigationView {
             ScrollView {
-                ForEach(sections, id: \.self) { item in
-                    section(text: item)
+                ForEach($sections, id: \.id) { $item in
+                    section(section: $item)
                 }
             }
             .navigationTitle("My Random Image")
         }
     }
-    func horizontalPosterView() -> some View {
+    func horizontalPosterView(_ sectionBinding: Binding<Section>) -> some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(0..<5) { item in
-                    PosterView()
+                ForEach(0..<5) { index in
+                    let imageId = Int.random(in: 0...500)
+                    let url = URL(string: "https://picsum.photos/id/\(imageId)/200/300")
+                    NavigationLink {
+                        PosterView(url: url, title: sectionBinding.title)
+                        //Text(text)
+                    } label: {
+                        PosterView(url: url, title: sectionBinding.title)
+                    }
                 }
             }
             .padding(.horizontal)
             .frame(height: 150)
-        }
+        }      
         .scrollIndicators(.hidden)
     }
-    func section(text: String) -> some View {
-        VStack {
-            Text(text)
-                .font(.title2).bold()
-                .padding(.top)
-                .padding(.leading)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            horizontalPosterView()
+    func section(section: Binding<Section>) -> some View {
+            VStack {
+                TextField("섹션 제목", text: section.title)
+                    .font(.title2).bold()
+                    .padding(.top)
+                    .padding(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                horizontalPosterView(section)
+            }
         }
-    }
 }
 #Preview {
     RandomImageView()
